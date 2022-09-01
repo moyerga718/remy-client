@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import "./Home.css"
 
-export const Home = ({ token, setToken }) => {
+export const Home = ({ token, setToken, username, setUsername }) => {
     return <>
         <section>
             <div>
@@ -11,17 +11,20 @@ export const Home = ({ token, setToken }) => {
                 token
                     ? <>
                         <div>
-                            <p>Hello, </p>
-                            <Link to="/login" className="link-text">
+                            <p>Hello, {username}</p>
+                            <Link to="/new" className="link-text">
                                 <p> {'>'} New Game</p>
                             </Link>
-                            <Link to="/register" className="link-text">
+                            <Link to="/load" className="link-text">
                                 <p> {'>'} Load Game</p>
                             </Link>
                             <Link to="/about" className="link-text">
                                 <p> {'>'} About</p>
                             </Link>
-                            <Link to="/" className="link-text" onClick={() => { setToken('') }}>
+                            <Link to="/" className="link-text" onClick={() => { 
+                                setToken('') 
+                                setUsername('')
+                                }}>
                                 <p> {'>'} Log out</p>
                             </Link>
                         </div>

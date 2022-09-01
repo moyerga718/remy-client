@@ -2,7 +2,7 @@ import { useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { loginUser } from "../../managers/AuthManager"
 
-export const Login = ({ setToken, setUserId}) => {
+export const Login = ({ setToken, setUserId, setUsername}) => {
     const username = useRef()
     const password = useRef()
     const navigate = useNavigate()
@@ -21,6 +21,7 @@ export const Login = ({ setToken, setUserId}) => {
 
                 setToken(res.token)
                 setUserId(res.user_id)
+                setUsername(res.username)
                 navigate("/")
             }
             else {
