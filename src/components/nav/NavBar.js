@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { Link, useNavigate } from "react-router-dom"
 import "./NavBar.css"
 
-export const NavBar = ({ token, setToken }) => {
+export const NavBar = ({ token, setToken, setUsername }) => {
     const navigate = useNavigate()
 
 
@@ -21,7 +21,10 @@ export const NavBar = ({ token, setToken }) => {
                 {
                     token
                         ? <>
-                            <Link to="/" onClick={() => { setToken('')  }} className="navbar__link">Log out</Link>
+                            <Link to="/" onClick={() => { 
+                                setToken('')  
+                                setUsername('')
+                                }} className="navbar__link">Log out</Link>
                         </>
                         :<>
                             <Link to="/register" className="navbar__link__register">Register</Link>
