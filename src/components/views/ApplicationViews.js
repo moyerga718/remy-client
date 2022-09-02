@@ -3,6 +3,8 @@ import { Login } from "../auth/Login"
 import { Register } from "../auth/Register"
 import { Authorized } from "./Authorized"
 import { Home } from "../home/Home"
+import { NewCharacter } from "../character/NewCharacter"
+import { LoadCharacter } from "../character/LoadCharacter"
 
 export const ApplicationViews = ({ token, setToken, setUserId, userId, setUsername, username }) => {
     return <Routes>
@@ -12,6 +14,8 @@ export const ApplicationViews = ({ token, setToken, setUserId, userId, setUserna
         <Route path="/" element={<Home token={token} setToken={setToken} username={username} setUsername={setUsername}/>} />
         <Route element={<Authorized token={token} />}>
             <Route path="/" element={<Home token={token} setToken={setToken} username={username} setUsername={setUsername}/>} />
+            <Route path="/new" element={<NewCharacter userId={userId}/>} />
+            <Route path="/load" element={<LoadCharacter userId={userId}/>} />
         </Route>
     </Routes>
 }
