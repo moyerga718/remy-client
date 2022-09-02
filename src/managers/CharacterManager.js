@@ -9,3 +9,12 @@ export const createNewCharacter = (characterObj) => {
     })
         .then(response => response.json())
 }
+
+export const getUserCharacters = () => {
+    return fetch('http://localhost:8000/characters/my_characters', {
+        headers: {
+            'Authorization': `Token ${localStorage.getItem('auth_token')}`
+        }
+    })
+        .then(response => response.json())
+}
