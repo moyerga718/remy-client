@@ -18,3 +18,12 @@ export const getUserCharacters = () => {
     })
         .then(response => response.json())
 }
+
+export const getCharacter = (characterId) => {
+    return fetch(`http://localhost:8000/characters/${characterId}`, {
+        headers: {
+            'Authorization': `Token ${localStorage.getItem('auth_token')}`
+        }
+    })
+        .then(response => response.json())
+}
