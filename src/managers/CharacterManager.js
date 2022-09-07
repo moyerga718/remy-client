@@ -27,3 +27,23 @@ export const getCharacter = (characterId) => {
     })
         .then(response => response.json())
 }
+
+export const updateCharacterSituation = (characterId, outcomeId) => {
+    return fetch(`http://localhost:8000/characters/${characterId}?outcome=${outcomeId}`, {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${localStorage.getItem('auth_token')}`
+        },
+    })
+}
+
+export const updateCharacterSituationAndInventory = (characterId, outcomeId, itemId) => {
+    return fetch(`http://localhost:8000/characters/${characterId}?outcome=${outcomeId}&item=${itemId}`, {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${localStorage.getItem('auth_token')}`
+        },
+    })
+}
