@@ -29,7 +29,7 @@ export const NewCharacter = ({userId}) => {
                 items: [character.itemId]
             }
             createNewCharacter(characterObj).then(
-                navigate("/game")
+                response => navigate(`/game/${response.id}`)
             )
         }
     }

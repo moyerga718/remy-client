@@ -1,26 +1,58 @@
 import { useParams } from "react-router-dom"
 import { getCharacter } from "../../managers/CharacterManager"
+import { getCurrentSituation } from "../../managers/SituationManager"
+import { useState, useEffect } from "react"
+import "./Game.css"
 
 export const Game = () => {
     const [ gameLog, setGameLog ] = useState("")
-    const { gameId } = useParams()
-    const { character, setCharacter } = useState({})
+    const { characterId } = useParams()
+    const [character, setCharacter ] = useState({})
+    const [situation, setSituation] = useState({})
 
     useEffect(
         () => {
-            getCharacter(gameId).then(setCharacter)
-            
+            if (characterId) {
+                getCharacter(characterId).then(setCharacter)
+            }
         },
         []
     )
 
-    // STEPS:
-    // 1. Use use params to get game/character id
-    // 2. Do a fetch call to get that game information -> save that in state
-    // 3. Get character inventory along with this -> save in another state variable
-    // 4. Once we have those data, use character_current_situation to get situation and associated choices that fit passing criteria on gameflow page. 
-    // 5. Display current situation text and choices
-    // 6. Once a choice is selected
+    useEffect(
+        () => {
+            if (character.current_situation) {
+                getCurrentSituation(character?.current_situation?.id, characterId).then(setSituation)
+            }
+        },
+        [character]
+    )
 
-    return <>gameplay is gonna happen here</>
+    const handleSelection = (outcomeId) => {
+        // WHEN A SELECTION IS MADE - 
+        // 1. send choice ID and character ID to characterChoice view to flip that choice to true.
+        // 2. Update inventory and current situation for character 
+            // send characterId, outcomeId, and (maybe) item Id to backend
+            // Send new_item ID to character view to add that id to character items
+        // 3. Get character using characterId. 
+        // 4. This should trigger use effect to update current 
+        getCurrentSituation(outcomeId, characterId).then(setSituation)
+
+    }
+
+
+    return <>
+        {
+            (situation.choice_data)
+            ?<div>
+                <p>{situation?.situation_data?.text}</p>
+                <div className="choice-container">
+                {
+                    situation?.choice_data.map(choiceObj => <p className ="option-text" onClick={() => handleSelection(choiceObj?.outcome_situation)}>{'> '}{choiceObj.text}</p>)
+                }
+            </div>
+            </div>
+            :<></>
+        }
+    </>
 }
