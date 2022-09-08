@@ -1,6 +1,7 @@
 import { getUserCharacters } from "../../managers/CharacterManager"
 import { useState, useEffect } from "react"
 import { CharacterRadioButton } from "./CharacterRadioButton"
+import { deleteCharacter } from "../../managers/CharacterManager"
 import { Link } from "react-router-dom"
 
 export const LoadCharacter = ({userId}) => {
@@ -13,6 +14,15 @@ export const LoadCharacter = ({userId}) => {
         },
         []
     )
+
+    const handleDelete = () => {
+        deleteCharacter(selectedCharacter).then(
+            () => {
+                setSelectedCharacter(0)
+                getUserCharacters().then(setCharacters)
+            }
+        )
+    }
 
     return <>
         <p>Choose a game.</p>
@@ -30,7 +40,10 @@ export const LoadCharacter = ({userId}) => {
 
         {
             (selectedCharacter)
-            ? <Link to={`/game/${selectedCharacter}`}>Load Game</Link>
+            ? <>
+                <Link to={`/game/${selectedCharacter}`}>Load Game</Link>
+                <p onClick={() => handleDelete()}>Delete Game</p>
+            </>
             : <></>
         }
     
