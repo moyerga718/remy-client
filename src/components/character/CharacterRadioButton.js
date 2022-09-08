@@ -12,7 +12,7 @@ export const CharacterRadioButton = ({character, setSelectedCharacter}) => {
                 value={parseInt(character?.id)}
             />{" "}
             <div className="selection-div">
-                    <p className="selection-text">{'> '}{character?.first_name} | Current Location: {character.current_situation} | Items Collected: {character.items.length}</p>
+                    <p className="selection-text">{'> '}{character?.first_name} | Current Location: {character?.current_situation?.location} | Items Collected: {character.items.length}</p>
             </div>
 
         </label>
