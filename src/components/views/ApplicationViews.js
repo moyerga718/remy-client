@@ -6,6 +6,7 @@ import { Home } from "../home/Home"
 import { NewCharacter } from "../character/NewCharacter"
 import { LoadCharacter } from "../character/LoadCharacter"
 import { Game } from "../game/Game"
+import { GameContainer } from "../game/GameContainer"
 import { About } from "../about/About"
 
 export const ApplicationViews = ({ token, setToken, setUserId, userId, setUsername, username }) => {
