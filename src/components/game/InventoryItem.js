@@ -1,4 +1,4 @@
-export const InventoryItem = (item) => {
+export const InventoryItem = ({item}) => {
     return <>
     {
         (item.name)

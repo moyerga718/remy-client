@@ -7,7 +7,7 @@ import { updateCharacterSituation, updateCharacterSituationAndInventory } from "
 import { useState, useEffect } from "react"
 import "./Game.css"
 
-export const GameTest = (situation, characterId, setCharacter) => {
+export const GameTest = ({situation, characterId, setCharacter}) => {
     // const [ gameLog, setGameLog ] = useState("")
     // const { characterId } = useParams()
     // const [character, setCharacter ] = useState({})

@@ -6,6 +6,7 @@ import { updateCharacterSituation, updateCharacterSituationAndInventory } from "
 import { useState, useEffect } from "react"
 import { GameTest } from "./GameTest"
 import { Inventory } from "./Inventory"
+import { QuitButton } from "./QuitButton"
 import "./Game.css"
 
 export const GameContainer = () => {
@@ -34,14 +35,15 @@ export const GameContainer = () => {
 
     return <>
         <div className="game-container-div">
-            <div>
+            <div className="game-text-div">
                 {
                     (situation.choice_data)
                     ? <GameTest situation={situation} characterId={characterId} setCharacter={setCharacter} />
                     : <></>
                 }
             </div>
-            <div>
+            <div className="inventory-div">
+                <QuitButton />
                 <Inventory character={character} />
             </div>
         </div>
