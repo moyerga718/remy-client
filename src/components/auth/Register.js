@@ -24,7 +24,6 @@ export const Register = ({ setToken, setUserId, setUsername}) => {
                 last_name: lastName.current.value,
                 email: email.current.value,
                 password: password.current.value,
-                // bio: bio.current.value
             }
 
             registerUser(newUser)
@@ -44,7 +43,6 @@ export const Register = ({ setToken, setUserId, setUsername}) => {
     return (
         <section className="columns is-centered">
             <form className="column is-two-thirds" onSubmit={handleRegister}>
-                <h1 className="title">Rare Publishing</h1>
                 <p className="subtitle">Create an account</p>
                 <div className="field">
                     <label className="label">First Name</label>
@@ -91,12 +89,6 @@ export const Register = ({ setToken, setUserId, setUsername}) => {
                     </div>
                 </div>
 
-                {/* <div className="field">
-                    <label className="label">Bio</label>
-                    <div className="control">
-                        <textarea className="textarea" placeholder="Tell us about yourself..." ref={bio}></textarea>
-                    </div>
-                </div> */}
 
                 <div className="field is-grouped">
                     <div className="control">

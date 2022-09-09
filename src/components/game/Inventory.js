@@ -1,12 +1,13 @@
-export const Inventory = (character) => {
+import { InventoryItem } from "./InventoryItem"
+
+export const Inventory = ({character}) => {
     return <div>
         <p>Inventory:</p>
         {
             (character.items)
             ? <>
-            <p>items here</p>
                 {
-                    character?.items.map( item => <p>{item.name}</p>)
+                    character?.items.map( item => <InventoryItem item={item}/>)
                 }
             </>
             : <></>

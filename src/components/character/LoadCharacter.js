@@ -30,10 +30,18 @@ export const LoadCharacter = ({userId}) => {
         <div className = "character-selection-div">
             <div className="character-button-container">
                 {
-                    characters.map(character => <CharacterRadioButton key={`character--${character.id}`}
-                        character={character}
-                        setSelectedCharacter={setSelectedCharacter}
-                    />)
+                    (characters.length)
+                    ? <>
+                    {
+                        characters.map(character => <CharacterRadioButton key={`character--${character.id}`}
+                            character={character}
+                            setSelectedCharacter={setSelectedCharacter}
+                        />)
+                    }
+                    </>
+                    : <>
+                        <p>No games started.</p>
+                    </>
                 }
             </div>
         </div>

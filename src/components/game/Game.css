@@ -2,7 +2,7 @@
     cursor: pointer;
 }
 
-.game-container {
+.game-container-div {
     display: flex;
     justify-content: space-between;
 }
